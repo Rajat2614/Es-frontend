@@ -12,7 +12,7 @@ const NewsArticles = ({ initialData }) => {
   const [hasMore, setHasMore] = useState(true);
   const [length, setLength] = useState(20)
 
-  const user_location = "NL";
+  const user_location = "DL";
 
   useEffect(() => {
     if (initialData.data != undefined) {
