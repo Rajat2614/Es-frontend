@@ -46,8 +46,8 @@ const NewsArticles = ({ initialData }) => {
       <div className='news-articles '>
         {user_location === "NL" ?
           <>
-            {articles.map((article) => (
-              <Card article={article} />
+            {articles.map((article,i) => (
+              <Card article={article} key={i} />
             ))}
             {hasMore === true ?
             <div className='flex justify-center'>
@@ -64,8 +64,8 @@ const NewsArticles = ({ initialData }) => {
             loader={<h3> Loading...</h3>}
             endMessage={<h4>Nothing more to show</h4>}
           >
-            {articles.map((article) => (
-              <Card article={article} />
+            {articles.map((article,i) => (
+              <Card article={article} key={i} />
             ))}
           </InfiniteScroll>
         }
