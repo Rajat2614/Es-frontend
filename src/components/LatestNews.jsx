@@ -8,7 +8,7 @@ const LatestNews = () => {
     
     useEffect(() => {
         async function fetchData(){
-        const res = await axios.get('http://localhost:3000/api/news/getNews');
+        const res = await axios.get('https://es-backend.onrender.com/api/news/getNews');
         const ans = await JSON.stringify(res);
         const par = await JSON.parse(ans);
         setInitialData(par);

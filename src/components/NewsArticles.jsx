@@ -24,7 +24,7 @@ const NewsArticles = ({ initialData }) => {
 
   async function handleClick() {
     try {
-      const response = await axios.get(`http://localhost:3000/api/news/getNews/${currentPage}/${noOfPages}`);
+      const response = await axios.get(`https://es-backend.onrender.com/api/news/getNews/${currentPage}/${noOfPages}`);
       const newArticles = [...articles, ...response.data.data];
       setArticles(newArticles);
       setCurrentPage(response.data.nextPage);
