@@ -1,7 +1,7 @@
 import React from 'react';
 import {FaFacebook,FaTwitter,FaYoutube,FaLinkedin} from 'react-icons/fa';
 import {SiGooglepodcasts} from 'react-icons/si';
-import Image from 'next-image';
+import Image from 'next/image';
 
 const Navbar = () => {
     return (
