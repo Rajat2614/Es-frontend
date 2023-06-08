@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import Image from 'next/image';
 
 export default function Card(article) {
   article = article.article;
   return (
     <CardStyle>
       <div className="es-article-block card card-side bg-base-50 ">
-        <figure><img src={article.image} alt="Image" /></figure>
+        <figure><Image src={article.image} alt="Image" /></figure>
         <div className="card-body col-span-2 " key={article.id}>
           <a href='#' className='text-left genre bg-black text-white '>{article.genre}</a>
           <h2 className="card-title ">{article.title}</h2>
