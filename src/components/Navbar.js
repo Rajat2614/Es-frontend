@@ -1,7 +1,6 @@
 import React from 'react';
 import {FaFacebook,FaTwitter,FaYoutube,FaLinkedin} from 'react-icons/fa';
 import {SiGooglepodcasts} from 'react-icons/si';
-import Image from 'next/image';
 
 const Navbar = () => {
     return (
@@ -11,7 +10,7 @@ const Navbar = () => {
                     <a href='/'>Home</a> 
                 </div>
                 <div className='image'>
-                    <Image src='https://image-cdn.essentiallysports.com/wp-content/uploads/es_horizontal-1.png' alt='Logo'/>
+                    <img src='https://image-cdn.essentiallysports.com/wp-content/uploads/es_horizontal-1.png' alt='Logo'/>
                 </div>
                 <div className='social-media flex gap-4 items-center'>
                     <a href='https://www.facebook.com/essentiallysports'><FaFacebook/></a>
