@@ -10,9 +10,22 @@ const NewsArticles = ({ initialData }) => {
   // const [nextPage, setNextPage] = useState(initialData.nextPage);
   const [noOfPages, setNoOfPages] = useState(1);
   const [hasMore, setHasMore] = useState(true);
-  const [length, setLength] = useState(20)
+  const [length, setLength] = useState(20);
+  const [location, setLocation] = useState();
 
-  const user_location = "DL";
+  useEffect(() => {
+    if ('geolocation' in navigator) {
+      // Retrieve latitude & longitude coordinates from `navigator.geolocation` Web API
+      navigator.geolocation.getCurrentPosition(function(position) {
+
+        let lati = Math.trunc(position.coords.latitude);
+        let long = Math.trunc(position.coords.longitude);
+        setLocation({lati, long });
+      });
+    }
+  }, []);
+
+
 
   useEffect(() => {
     if (initialData.data != undefined) {
@@ -21,6 +34,15 @@ const NewsArticles = ({ initialData }) => {
     }
     handleClick();
   }, []);
+
+  function FindUserLocation(){
+    if(location && location.lati === 52 && location.long === 5){
+      return "NL";
+    }
+    else{
+      return "NotNL";
+    }
+  }
 
   async function handleClick() {
     try {
@@ -44,16 +66,16 @@ const NewsArticles = ({ initialData }) => {
         <h2>&#128293; LATEST NEWS</h2>
       </div>
       <div className='news-articles '>
-        {user_location === "NL" ?
+        {FindUserLocation() === "NL" ?
           <>
-            {articles.map((article,i) => (
+            {articles.map((article, i) => (
               <Card article={article} key={i} />
             ))}
             {hasMore === true ?
-            <div className='flex justify-center'>
-              <button className='btn btn-outline btn-success ' onClick={handleClick}>Read More..</button> </div>:<div className='flex justify-center'>
-              <h3 className="Justify-items-center">You reached the End of Articles.</h3>
-            </div> 
+              <div className='flex justify-center'>
+                <button className='btn btn-outline btn-success ' onClick={handleClick}>Read More..</button> </div> : <div className='flex justify-center'>
+                <h3 className="Justify-items-center">You reached the End of Articles.</h3>
+              </div>
             }
           </>
           :
@@ -64,7 +86,7 @@ const NewsArticles = ({ initialData }) => {
             loader={<h3> Loading...</h3>}
             endMessage={<h4>Nothing more to show</h4>}
           >
-            {articles.map((article,i) => (
+            {articles.map((article, i) => (
               <Card article={article} key={i} />
             ))}
           </InfiniteScroll>
